@@ -39,10 +39,18 @@ app.post('/messages', (req, res) => {
 })
 
 app.put('/messages', (req, res) => {
+  let thumblog
+  console.log('Up', req.body.thumbUp,'Down',req.body.thumbDown)
+  if(Object.keys(req.body)[2] == 'thumbUp'){
+    thumblog =req.body.thumbUp +1
+  }else if(Object.keys(req.body)[2] == 'thumbDown'){
+      thumblog =req.body.thumbDown -1
+  }
+  console.log(Object.keys(req.body)[2] )
   db.collection('messages')
   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
     $set: {
-      thumbUp:req.body.thumbUp + 1
+      thumbUp:thumblog
     }
   }, {
     sort: {_id: -1},
