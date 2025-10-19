@@ -24,7 +24,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  db.collection('messages').find().toArray((err, result) => {
+  db.collection('messages').find().sort({likes:1}).toArray((err, result) => {
     if (err) return console.log(err)
     res.render('index.ejs', {messages: result})
   })
