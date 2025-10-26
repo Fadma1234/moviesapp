@@ -2,9 +2,11 @@
 //make thumb down working but first read the code and understand it
 //initialize a variable for thumbdown
 //create an array for thumbdown
-//go ton server and make it work
+//go to server and make it work
 //after alot of debugging with Justin we made it work
 //it wasn't working because of the 0 after using the index of thumbup from arr which is 2 it worked
+//make it personal and turn it to movies app
+//changed it to be linked to my own database on mongo db atlas
 
 
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
@@ -21,7 +23,7 @@ Array.from(thumbUp).forEach(function(element) {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
-            'msg': msg,
+           
             'thumbUp':thumbUp
           })
         })
@@ -44,7 +46,7 @@ Array.from(thumbDown).forEach(function(element) {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
-            'msg': msg,
+           
             'thumbDown':thumbDown
           })
         })
@@ -69,7 +71,7 @@ Array.from(trash).forEach(function(element) {
           },
           body: JSON.stringify({
             'name': name,
-            'msg': msg
+           
           })
         }).then(function (response) {
           window.location.reload()
