@@ -1,11 +1,9 @@
-![21 Savage](public/21savage.jpg)
+### Description
+A full-stack app for displaying movies released year.
 
-## Installation
+## Tech used
 
-1. Clone repo
-2. run `npm install`
-
-## Usage
-
-1. run `npm run savage`
-2. Navigate to `localhost:3000`
+Node.js
+Express.js
+MongoDB
+EJS

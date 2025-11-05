@@ -7,74 +7,27 @@
 //it wasn't working because of the 0 after using the index of thumbup from arr which is 2 it worked
 //make it personal and turn it to movies app
 //changed it to be linked to my own database on mongo db atlas
+//used google help and AI to debug
 
 
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var trash = document.getElementsByClassName("fa-trash");
-const thumbDown = document.getElementsByClassName("fa fa-thumbs-down");
 
-Array.from(thumbUp).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-           
-            'thumbUp':thumbUp
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
-Array.from(thumbDown).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbDown = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-           
-            'thumbDown':thumbDown
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
+document.getElementById('movieName').addEventListener('blur', async (e) => {
+  const name = e.target.value.trim();
+  if (!name) return;
 
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('messages', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-           
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
+  const yearDisplay = document.getElementById('movieYear');
+  yearDisplay.textContent = 'Searching...';
+
+  try {
+    const res = await fetch(`/movies/${encodeURIComponent(name)}`);
+    if (res.ok) {
+      const movie = await res.json();
+      yearDisplay.textContent = `${movie.name} was released in ${movie.year}`;
+    } else {
+      yearDisplay.textContent = 'Movie not found in database.';
+    }
+  } catch (err) {
+    console.error(err);
+    yearDisplay.textContent = 'Error fetching movie info.';
+  }
 });
