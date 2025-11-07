@@ -1,12 +1,13 @@
 ### Movies app
-<img width="1920" alt="image" src="https://github.com/user-attachments/assets/33a1d28a-cedf-415e-908c-b6cc5fa7d5f4" />
 
+
+<img width="1920" alt="image" src="https://github.com/user-attachments/assets/b987384a-49d3-48d1-a70a-d925703b4463" />
 
 
 
 
 ### Description
-A full-stack app for displaying movies released year.
+A full-stack app for displaying movies released year and allows user to add movies, delete and edit them.
 
 ## Tech used
 
