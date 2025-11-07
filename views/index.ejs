@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movies app</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Movies</h1>
+
+  <h2>Get Release Year by Name</h2>
+
+  <select id="movieSelect">
+    <option value="">-- Select a movie --</option>
+    <% movies.forEach(function(movie) { %>
+      <option value="<%= movie.name %>">
+        <%= movie.name %>
+      </option>
+      <% }); %>
+  </select>
+  <button id="searchYearButton">Get Year</button>
+  <p id="movieYearDisplay"></p>
+
+  <hr>
+
+  <h2>All Movies in Database (Manage)</h2>
+  <ul class="movies">
+    <% for (let i=0; i < movies.length; i++) { %>
+
+      <li data-id="<%= movies[i]._id %>">
+        <strong><span class="movie-name">
+            <%= movies[i].name %>
+          </span></strong>
+        -
+        <span class="movie-year">
+          <%= movies[i].year %>
+        </span>
+
+        <span class="trash-btn">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </span>
+        <button class="edit-btn">Edit</button>
+
+
+        <div class="edit-form" style="display:none;">
+          <input type="text" class="edit-name" value="<%= movies[i].name %>">
+          <input type="text" class="edit-year" value="<%= movies[i].year %>">
+          <button class="save-edit-btn">Save</button>
+          <button class="cancel-edit-btn">Cancel</button>
+        </div>
+      </li>
+      <% } %>
+  </ul>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>
