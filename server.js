@@ -41,13 +41,12 @@ app.use(express.static('public'));
 
 // --- ROUTES ---
 
-// 1️⃣ Home route: show all movies
+
 app.get('/', async (req, res) => {
   const movies = await db.collection('movies').find().sort({ year: 1 }).toArray();
   res.render('index.ejs', { movies });
 });
 
-// 2️⃣ Search by movie name (return JSON year)
 app.get('/movies/:name', async (req, res) => {
   const movieName = req.params.name.trim();
 
@@ -76,7 +75,7 @@ app.post('/movies', async (req, res) => {
       thumbUp: 0,
       thumbDown: 0
     });
-    console.log(`🎬 Added ${movieName} (${movieYear})`);
+    console.log(`Added ${movieName} (${movieYear})`);
     res.redirect('/');
   } catch (err) {
     console.error(err);

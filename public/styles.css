@@ -1,28 +1,179 @@
-body{
- background-image: linear-gradient(to right, rgb(114, 205, 250), rgb(0, 255, 255), rgb(0, 255, 213));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-h3{
+
+body {
+  background-image: linear-gradient(to right, rgb(114, 205, 250), rgb(0, 255, 255), rgb(0, 255, 213));
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  margin: 20px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
   margin-top: 40px;
+  color: white;
+  text-align: center;
 }
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: rgb(0, 255, 213);
+}
+
+#movieName {
+  max-width: 500px;
+  margin: 20px auto;
+  display: block;
+}
+
+#movieYear {
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  margin: 15px 0;
+  min-height: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 button {
   background-image: linear-gradient(to right, #8f829c 0%, #bcc4d3 100%);
   color: white;
-  padding: 15px 30px;
+  padding: 12px 25px;
   border: none;
   border-radius: 50px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: 5px;
 }
-form{
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+form button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.edit {
+  background-image: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+}
+
+.delete {
+  background-image: linear-gradient(to right, #f093fb 0%, #f5576c 100%);
+}
+
+hr {
+  max-width: 600px;
+  margin: 30px auto;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.movies {
+  max-width: 700px;
+  margin: 20px auto;
+  list-style: none;
+  padding: 0;
+}
+
+.movies li {
+  background-color: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.movies li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.movies li strong {
+  font-size: 1.2em;
+  color: #333;
+  flex: 1;
+}
+
+.movies li button {
+  margin-left: 10px;
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.2em;
+  }
+  
+  form {
+    padding: 20px;
+  }
+  
+  .movies li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .movies li button {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Movies app</title>
@@ -7,32 +8,45 @@
   <link rel="stylesheet" href="font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <h1>Movies</h1>
   <h2>What is your favorite movie?</h2>
 
+  <form action="/movies" method="POST">
+    <input type="text" placeholder="Movie Name" name="name" required>
+    <input type="text" placeholder="Release Year" name="year" required>
+    <button type="submit">Add Movie</button>
+  </form>
 
- <h2>Search Movie Year</h2>
-<input type="text" id="movieName" placeholder="Enter movie name">
-<p id="movieYear"></p>
+  <hr>
 
-<hr>
+  <h2>Search Movie Year</h2>
+  <input type="text" id="movieName" placeholder="Enter movie name and press Enter">
+  <p id="movieYear"></p>
 
-<h2>All Movies in Database</h2>
-<ul class="movies">
-  <% for (let i = 0; i < movies.length; i++) { %>
-    <li>
-      <strong><%= movies[i].name %></strong> - <%= movies[i].year %>
-    </li>
-  <% } %>
-</ul>
+  <hr>
 
+  <h2>All Movies in Database</h2>
+  <ul class="movies">
+    <% for (let i=0; i < movies.length; i++) { %>
+      <li>
+        <strong>
+          <%= movies[i].name %>
+        </strong> - <%= movies[i].year %>
 
+          <button class="edit" data-name="<%= movies[i].name %>" data-year="<%= movies[i].year %>">
+            Edit
+          </button>
 
-  <button type="submit">Search Movie from the List</button>
+          <button class="delete" data-name="<%= movies[i].name %>">
+            Delete
+          </button>
+      </li>
+      <% } %>
+  </ul>
 
-
-  <script src="main.js"></script>
-
+  <script src="/main.js"></script>
 </body>
+
 </html>
